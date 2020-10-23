@@ -1,0 +1,16 @@
+{
+  "name": "channel-talk-library",
+  "version": "0.0.1",
+  "description": "use channeltalk without inner javascript",
+  "main": "index.js",
+  "repository": "https://github.com/dhoonjang/react-channel-talk.git",
+  "author": "dhoonjang <dhoonjang@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "tsc"
+  }
+}
