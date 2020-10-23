@@ -4,10 +4,10 @@ export declare type IWindow = typeof window & {
     attachEvent: any;
 };
 declare class ChannelService {
-    constructor();
+    pluginKey: string;
+    constructor(pluginKey: string);
     loadScript(): void;
-    boot(pluginKey: string): void;
+    boot(): void;
     shutdown(): void;
 }
-declare const _default: ChannelService;
-export default _default;
+export default ChannelService;

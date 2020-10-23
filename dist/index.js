@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ChannelService = /** @class */ (function () {
-    function ChannelService() {
+    function ChannelService(pluginKey) {
+        this.pluginKey = "";
+        this.pluginKey = pluginKey;
         this.loadScript();
     }
     ChannelService.prototype.loadScript = function () {
@@ -41,10 +43,10 @@ var ChannelService = /** @class */ (function () {
             window.addEventListener("load", load, false);
         }
     };
-    ChannelService.prototype.boot = function (pluginKey) {
+    ChannelService.prototype.boot = function () {
         var ChannelIO = window.ChannelIO;
         ChannelIO("boot", {
-            pluginKey: pluginKey,
+            pluginKey: this.pluginKey,
         });
     };
     ChannelService.prototype.shutdown = function () {
@@ -53,4 +55,4 @@ var ChannelService = /** @class */ (function () {
     };
     return ChannelService;
 }());
-exports.default = new ChannelService();
+exports.default = ChannelService;
