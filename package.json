@@ -1,7 +1,7 @@
 {
   "name": "channel-talk-ts",
-  "version": "0.1.1",
-  "description": "use channeltalk without inner javascript",
+  "version": "0.1.2",
+  "description": "use channeltalk in typescript without inner javascript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/dhoonjang/react-channel-talk.git",
