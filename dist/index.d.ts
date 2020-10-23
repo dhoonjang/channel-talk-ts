@@ -1,6 +1,13 @@
-/**
- * @Method: Returns the plural form of any noun.
- * @Param: {string}
- * @Return: {string}
- */
-export declare function getPlural(str: any): string;
+export declare type IWindow = typeof window & {
+    ChannelIO: any;
+    ChannelIOInitialized: boolean;
+    attachEvent: any;
+};
+declare class ChannelService {
+    constructor();
+    loadScript(): void;
+    boot(pluginKey: string): void;
+    shutdown(): void;
+}
+declare const _default: ChannelService;
+export default _default;

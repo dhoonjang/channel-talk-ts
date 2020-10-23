@@ -1,32 +1,56 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPlural = void 0;
-var pluralize = __importStar(require("pluralize"));
-/**
- * @Method: Returns the plural form of any noun.
- * @Param: {string}
- * @Return: {string}
- */
-function getPlural(str) {
-    return pluralize.plural(str);
-}
-exports.getPlural = getPlural;
+var ChannelService = /** @class */ (function () {
+    function ChannelService() {
+        this.loadScript();
+    }
+    ChannelService.prototype.loadScript = function () {
+        var chanelWindow = window;
+        if (chanelWindow.ChannelIO) {
+            return (window.console.error || window.console.log || function () { })("ChannelIO script included twice.");
+        }
+        var ch = function () {
+            ch.c(arguments);
+        };
+        ch.q = [];
+        ch.c = function (args) {
+            ch.q.push(args);
+        };
+        chanelWindow.ChannelIO = ch;
+        function load() {
+            var _a;
+            if (chanelWindow.ChannelIOInitialized)
+                return;
+            chanelWindow.ChannelIOInitialized = true;
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
+            s.charset = "UTF-8";
+            var x = document.getElementsByTagName("script")[0];
+            (_a = x.parentNode) === null || _a === void 0 ? void 0 : _a.insertBefore(s, x);
+        }
+        if (document.readyState === "complete") {
+            load();
+        }
+        else if (chanelWindow.attachEvent) {
+            chanelWindow.attachEvent("onload", load);
+        }
+        else {
+            window.addEventListener("DOMContentLoaded", load, false);
+            window.addEventListener("load", load, false);
+        }
+    };
+    ChannelService.prototype.boot = function (pluginKey) {
+        var ChannelIO = window.ChannelIO;
+        ChannelIO("boot", {
+            pluginKey: pluginKey,
+        });
+    };
+    ChannelService.prototype.shutdown = function () {
+        var ChannelIO = window.ChannelIO;
+        ChannelIO("shutdown");
+    };
+    return ChannelService;
+}());
+exports.default = new ChannelService();
