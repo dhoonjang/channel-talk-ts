@@ -4,7 +4,7 @@ export type IWindow = typeof window & {
   attachEvent: any;
 };
 
-class ChannelService {
+export default class ChannelService {
   private pluginKey: string;
 
   constructor(pluginKey: string) {
@@ -66,5 +66,3 @@ class ChannelService {
     ChannelIO("shutdown");
   }
 }
-
-export default ChannelService;
