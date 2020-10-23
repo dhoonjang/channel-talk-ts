@@ -2,14 +2,15 @@
   "name": "channel-talk-ts",
   "version": "0.0.1",
   "description": "use channeltalk without inner javascript",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/dhoonjang/react-channel-talk.git",
   "author": "dhoonjang <dhoonjang@gmail.com>",
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "typescript": "^4.0.3"
   },
-  "devDependencies": {},
   "scripts": {
     "build": "tsc"
   }
