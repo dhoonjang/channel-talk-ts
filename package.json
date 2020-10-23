@@ -2,8 +2,11 @@
   "name": "channel-talk-ts",
   "version": "0.1.4",
   "description": "use channeltalk in typescript without inner javascript",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "browser": "",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "module": "build/index.es.js",
+  "jsnext:main": "build/index.es.js",
   "repository": "https://github.com/dhoonjang/react-channel-talk.git",
   "author": "dhoonjang <dhoonjang@gmail.com>",
   "license": "MIT",
@@ -12,6 +15,6 @@
     "typescript": "^4.0.3"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "rollup -c"
   }
 }

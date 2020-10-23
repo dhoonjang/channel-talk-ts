@@ -1,1 +1,11 @@
-lib/
+# npm
+node_modules/
+
+# dev
+src
+.gitignore
+rollup.config.js
+tsconfig.json
+
+# GIT
+.git
