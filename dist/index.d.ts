@@ -4,7 +4,7 @@ export declare type IWindow = typeof window & {
     attachEvent: any;
 };
 declare class ChannelService {
-    pluginKey: string;
+    private pluginKey;
     constructor(pluginKey: string);
     loadScript(): void;
     boot(): void;

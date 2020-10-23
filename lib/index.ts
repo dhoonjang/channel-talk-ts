@@ -5,7 +5,7 @@ export type IWindow = typeof window & {
 };
 
 class ChannelService {
-  public pluginKey: string = "";
+  private pluginKey: string;
 
   constructor(pluginKey: string) {
     this.pluginKey = pluginKey;

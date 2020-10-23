@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var ChannelService = /** @class */ (function () {
     function ChannelService(pluginKey) {
-        this.pluginKey = "";
         this.pluginKey = pluginKey;
         this.loadScript();
     }
