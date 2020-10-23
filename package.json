@@ -7,7 +7,7 @@
   "types": "build/index.d.ts",
   "module": "build/index.es.js",
   "jsnext:main": "build/index.es.js",
-  "repository": "https://github.com/dhoonjang/react-channel-talk.git",
+  "repository": "https://github.com/dhoonjang/channel-talk-ts.git",
   "author": "dhoonjang <dhoonjang@gmail.com>",
   "license": "MIT",
   "dependencies": {},
