@@ -5,7 +5,10 @@ export type IWindow = typeof window & {
 };
 
 class ChannelService {
-  constructor() {
+  public pluginKey: string = "";
+
+  constructor(pluginKey: string) {
+    this.pluginKey = pluginKey;
     this.loadScript();
   }
 
@@ -51,10 +54,10 @@ class ChannelService {
     }
   }
 
-  boot(pluginKey: string) {
+  boot() {
     const { ChannelIO }: IWindow = window as IWindow;
     ChannelIO("boot", {
-      pluginKey,
+      pluginKey: this.pluginKey,
     });
   }
 
@@ -64,4 +67,4 @@ class ChannelService {
   }
 }
 
-export default new ChannelService();
+export default ChannelService;
