@@ -17,7 +17,8 @@ export interface IChannelServiceSettings {
 class ChannelService {
   private settings: IChannelServiceSettings;
 
-  constructor() {
+  constructor(settings: IChannelServiceSettings) {
+    this.settings = settings;
     this.loadScript();
   }
 
@@ -63,16 +64,9 @@ class ChannelService {
     }
   }
 
-  boot(
-    settings?: IChannelServiceSettings,
-    callback?: (error: Error, user: any) => void
-  ) {
-    if (settings) this.settings = settings;
-
-    if (this.settings !== undefined) {
-      const { ChannelIO }: IWindow = window as IWindow;
-      ChannelIO("boot", this.settings, callback);
-    }
+  boot() {
+    const { ChannelIO }: IWindow = window as IWindow;
+    ChannelIO("boot", this.settings);
   }
 
   hideMessenger() {
@@ -96,4 +90,4 @@ class ChannelService {
   }
 }
 
-export default new ChannelService();
+export default ChannelService;
