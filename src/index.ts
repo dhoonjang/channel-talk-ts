@@ -4,11 +4,18 @@ export type IWindow = typeof window & {
   attachEvent: any;
 };
 
-class ChannelService {
-  private pluginKey: string;
+export interface IChannelServiceSetting {
+  pluginKey: string;
+  customLauncherSelector?: string;
+  hideChannelButtonOnBoot?: boolean;
+  profile?: {
+    name: string;
+    mobileNumber: string;
+  };
+}
 
-  constructor(pluginKey: string) {
-    this.pluginKey = pluginKey;
+class ChannelService {
+  constructor() {
     this.loadScript();
   }
 
@@ -54,11 +61,27 @@ class ChannelService {
     }
   }
 
-  boot() {
+  boot(
+    settings: IChannelServiceSetting,
+    callback?: (error: Error, user: any) => void
+  ) {
     const { ChannelIO }: IWindow = window as IWindow;
-    ChannelIO("boot", {
-      pluginKey: this.pluginKey,
-    });
+    ChannelIO("boot", settings, callback);
+  }
+
+  hideMessenger() {
+    const { ChannelIO }: IWindow = window as IWindow;
+    ChannelIO("hideMessenger");
+  }
+
+  showMessenger() {
+    const { ChannelIO }: IWindow = window as IWindow;
+    ChannelIO("showMessenger");
+  }
+
+  openChat(chatId: number) {
+    const { ChannelIO }: IWindow = window as IWindow;
+    ChannelIO("openChat", chatId);
   }
 
   shutdown() {
@@ -67,4 +90,4 @@ class ChannelService {
   }
 }
 
-export default ChannelService;
+export default new ChannelService();
