@@ -1,6 +1,5 @@
 var ChannelService = /** @class */ (function () {
-    function ChannelService(pluginKey) {
-        this.pluginKey = pluginKey;
+    function ChannelService() {
         this.loadScript();
     }
     ChannelService.prototype.loadScript = function () {
@@ -40,11 +39,21 @@ var ChannelService = /** @class */ (function () {
             window.addEventListener("load", load, false);
         }
     };
-    ChannelService.prototype.boot = function () {
+    ChannelService.prototype.boot = function (settings, callback) {
         var ChannelIO = window.ChannelIO;
-        ChannelIO("boot", {
-            pluginKey: this.pluginKey,
-        });
+        ChannelIO("boot", settings, callback);
+    };
+    ChannelService.prototype.hideMessenger = function () {
+        var ChannelIO = window.ChannelIO;
+        ChannelIO("hideMessenger");
+    };
+    ChannelService.prototype.showMessenger = function () {
+        var ChannelIO = window.ChannelIO;
+        ChannelIO("showMessenger");
+    };
+    ChannelService.prototype.openChat = function (chatId) {
+        var ChannelIO = window.ChannelIO;
+        ChannelIO("openChat", chatId);
     };
     ChannelService.prototype.shutdown = function () {
         var ChannelIO = window.ChannelIO;
@@ -52,6 +61,7 @@ var ChannelService = /** @class */ (function () {
     };
     return ChannelService;
 }());
+var index = new ChannelService();
 
-export default ChannelService;
+export default index;
 //# sourceMappingURL=index.es.js.map
