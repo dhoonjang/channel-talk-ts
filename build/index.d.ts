@@ -3,7 +3,7 @@ export declare type IWindow = typeof window & {
     ChannelIOInitialized: boolean;
     attachEvent: any;
 };
-export interface IChannelServiceSetting {
+export interface IChannelServiceSettings {
     pluginKey: string;
     customLauncherSelector?: string;
     hideChannelButtonOnBoot?: boolean;
@@ -13,9 +13,10 @@ export interface IChannelServiceSetting {
     };
 }
 declare class ChannelService {
+    private settings;
     constructor();
     loadScript(): void;
-    boot(settings: IChannelServiceSetting, callback?: (error: Error, user: any) => void): void;
+    boot(settings?: IChannelServiceSettings, callback?: (error: Error, user: any) => void): void;
     hideMessenger(): void;
     showMessenger(): void;
     openChat(chatId: number): void;

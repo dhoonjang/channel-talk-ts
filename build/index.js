@@ -44,8 +44,12 @@ var ChannelService = /** @class */ (function () {
         }
     };
     ChannelService.prototype.boot = function (settings, callback) {
-        var ChannelIO = window.ChannelIO;
-        ChannelIO("boot", settings, callback);
+        if (settings)
+            this.settings = settings;
+        if (this.settings !== undefined) {
+            var ChannelIO = window.ChannelIO;
+            ChannelIO("boot", this.settings, callback);
+        }
     };
     ChannelService.prototype.hideMessenger = function () {
         var ChannelIO = window.ChannelIO;

@@ -4,7 +4,7 @@ export type IWindow = typeof window & {
   attachEvent: any;
 };
 
-export interface IChannelServiceSetting {
+export interface IChannelServiceSettings {
   pluginKey: string;
   customLauncherSelector?: string;
   hideChannelButtonOnBoot?: boolean;
@@ -15,6 +15,8 @@ export interface IChannelServiceSetting {
 }
 
 class ChannelService {
+  private settings: IChannelServiceSettings;
+
   constructor() {
     this.loadScript();
   }
@@ -62,11 +64,15 @@ class ChannelService {
   }
 
   boot(
-    settings: IChannelServiceSetting,
+    settings?: IChannelServiceSettings,
     callback?: (error: Error, user: any) => void
   ) {
-    const { ChannelIO }: IWindow = window as IWindow;
-    ChannelIO("boot", settings, callback);
+    if (settings) this.settings = settings;
+
+    if (this.settings !== undefined) {
+      const { ChannelIO }: IWindow = window as IWindow;
+      ChannelIO("boot", this.settings, callback);
+    }
   }
 
   hideMessenger() {
