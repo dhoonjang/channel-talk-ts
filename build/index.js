@@ -3,7 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var ChannelService = /** @class */ (function () {
-    function ChannelService() {
+    function ChannelService(settings) {
+        this.settings = settings;
         this.loadScript();
     }
     ChannelService.prototype.loadScript = function () {
@@ -43,13 +44,9 @@ var ChannelService = /** @class */ (function () {
             window.addEventListener("load", load, false);
         }
     };
-    ChannelService.prototype.boot = function (settings, callback) {
-        if (settings)
-            this.settings = settings;
-        if (this.settings !== undefined) {
-            var ChannelIO = window.ChannelIO;
-            ChannelIO("boot", this.settings, callback);
-        }
+    ChannelService.prototype.boot = function () {
+        var ChannelIO = window.ChannelIO;
+        ChannelIO("boot", this.settings);
     };
     ChannelService.prototype.hideMessenger = function () {
         var ChannelIO = window.ChannelIO;
@@ -69,7 +66,6 @@ var ChannelService = /** @class */ (function () {
     };
     return ChannelService;
 }());
-var index = new ChannelService();
 
-exports.default = index;
+exports.default = ChannelService;
 //# sourceMappingURL=index.js.map

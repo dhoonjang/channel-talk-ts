@@ -14,13 +14,12 @@ export interface IChannelServiceSettings {
 }
 declare class ChannelService {
     private settings;
-    constructor();
+    constructor(settings: IChannelServiceSettings);
     loadScript(): void;
-    boot(settings?: IChannelServiceSettings, callback?: (error: Error, user: any) => void): void;
+    boot(): void;
     hideMessenger(): void;
     showMessenger(): void;
     openChat(chatId: number): void;
     shutdown(): void;
 }
-declare const _default: ChannelService;
-export default _default;
+export default ChannelService;
