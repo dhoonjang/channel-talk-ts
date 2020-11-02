@@ -1,6 +1,6 @@
 {
   "name": "channel-talk-ts",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "use channeltalk in typescript without inner javascript",
   "browser": "build/index.js",
   "main": "build/index.js",
